@@ -11,9 +11,9 @@ import Combine
 final class CurrentCoronaSignalStorage {
     @Published private(set) var currentCoronaSignal: CoronaSignal?
     @Published private(set) var currentRegionID: Int?
+    private(set) var geoElement: CoronaGeoElement?
 
     private let geoElementStorageKey = "current_geo_element_storage_key"
-    private var geoElement: CoronaGeoElement?
 
     init() {
         let geoElementData = UserDefaults.standard.object(forKey: geoElementStorageKey) as? Data

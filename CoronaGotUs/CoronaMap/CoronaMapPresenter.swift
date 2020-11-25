@@ -98,6 +98,7 @@ extension CoronaMapDefaultPresenter {
             )
         else { return }
         storage.update(geoElement: currentGeoRegion)
+        view?.set(currentGeoElement: currentGeoRegion)
     }
 }
 

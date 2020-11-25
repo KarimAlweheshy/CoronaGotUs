@@ -11,6 +11,7 @@ import ArcGIS
 protocol CoronaMapView: AnyObject {
     func set(map: AGSMap)
     func set(locationDataSource: AGSLocationDataSource)
+    func set(currentGeoElement: CoronaGeoElement?)
     func setUserLocationChangeHandler(handler: @escaping (AGSLocation) -> Void)
     func geoElements(
         for location: AGSPoint,
@@ -21,6 +22,7 @@ protocol CoronaMapView: AnyObject {
 final class CoronaMapViewController: UIViewController {
     @IBOutlet var mapView: AGSMapView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var regionStatusView: RegionStatusView!
 
     private let presenter: CoronaMapPresenter
     private var lastPopupQuery: AGSCancelable?
@@ -51,6 +53,10 @@ extension CoronaMapViewController: CoronaMapView {
     func set(locationDataSource: AGSLocationDataSource) {
         mapView.locationDisplay.dataSource = locationDataSource
         mapView.locationDisplay.start(completion: nil)
+    }
+
+    func set(currentGeoElement: CoronaGeoElement?) {
+        regionStatusView.update(for: currentGeoElement)
     }
 
     func setUserLocationChangeHandler(
