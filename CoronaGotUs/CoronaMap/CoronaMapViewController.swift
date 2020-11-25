@@ -20,9 +20,10 @@ protocol CoronaMapView: AnyObject {
 }
 
 final class CoronaMapViewController: UIViewController {
-    @IBOutlet var mapView: AGSMapView!
-    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet var regionStatusView: RegionStatusView!
+    @IBOutlet private var mapView: AGSMapView!
+    @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private var regionStatusView: RegionStatusView!
+    @IBOutlet private var legendButton: UIButton!
 
     private let presenter: CoronaMapPresenter
     private var lastPopupQuery: AGSCancelable?
@@ -100,6 +101,12 @@ extension CoronaMapViewController {
     @objc private func didTapDonePopUp() {
         dismiss(animated: true, completion: nil)
     }
+
+    @IBAction private func didTapShowLegend() {
+        let viewController = CoronaLegendViewControllerFactory().makeViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - AGSGeoViewTouchDelegate
@@ -131,6 +138,10 @@ extension CoronaMapViewController: AGSGeoViewTouchDelegate {
 extension CoronaMapViewController {
     private func setupUI() {
         mapView.touchDelegate = self
+        legendButton.setTitle(
+            NSLocalizedString("corona_legend_title", comment: ""),
+            for: .normal
+        )
     }
 
     private func showPopups(_ popups: [AGSPopup]) {

@@ -26,6 +26,10 @@
 		45AAEAB7256ED7EF00862EF0 /* CurrentCoronaSignalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAB6256ED7EF00862EF0 /* CurrentCoronaSignalStorage.swift */; };
 		45AAEABF256EDD5800862EF0 /* UserCoronaChangeNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEABE256EDD5800862EF0 /* UserCoronaChangeNotifier.swift */; };
 		45AAEAC4256EEB3600862EF0 /* RegionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAC3256EEB3600862EF0 /* RegionStatusView.swift */; };
+		45AAEACA256EF6D300862EF0 /* CoronaLegend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AAEAC9256EF6D300862EF0 /* CoronaLegend.storyboard */; };
+		45AAEACF256EF85900862EF0 /* CoronaLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEACE256EF85900862EF0 /* CoronaLegendViewController.swift */; };
+		45AAEAD7256EF8CD00862EF0 /* CoronaLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAD6256EF8CD00862EF0 /* CoronaLegendCell.swift */; };
+		45AAEADC256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */; };
 		52F3DD20F285D0F9C43B2E6B /* Pods_CoronaGotUs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1CD27B9693B5422A0F1EC /* Pods_CoronaGotUs.framework */; };
 		8768DEA9110654F948A4C2DF /* Pods_CoronaGotUsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4A8B059F745211804948DC /* Pods_CoronaGotUsTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +78,10 @@
 		45AAEAB6256ED7EF00862EF0 /* CurrentCoronaSignalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCoronaSignalStorage.swift; sourceTree = "<group>"; };
 		45AAEABE256EDD5800862EF0 /* UserCoronaChangeNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoronaChangeNotifier.swift; sourceTree = "<group>"; };
 		45AAEAC3256EEB3600862EF0 /* RegionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionStatusView.swift; sourceTree = "<group>"; };
+		45AAEAC9256EF6D300862EF0 /* CoronaLegend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoronaLegend.storyboard; sourceTree = "<group>"; };
+		45AAEACE256EF85900862EF0 /* CoronaLegendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendViewController.swift; sourceTree = "<group>"; };
+		45AAEAD6256EF8CD00862EF0 /* CoronaLegendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendCell.swift; sourceTree = "<group>"; };
+		45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendViewControllerFactory.swift; sourceTree = "<group>"; };
 		4ED83281230406F4D9D20A53 /* Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoronaGotUs-CoronaGotUsUITests/Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D4A8B059F745211804948DC /* Pods_CoronaGotUsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoronaGotUsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940A86D0C751C1B0C0462E0F /* Pods-CoronaGotUsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaGotUsTests.debug.xcconfig"; path = "Target Support Files/Pods-CoronaGotUsTests/Pods-CoronaGotUsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 				4517A171256E545700B19EC3 /* SceneDelegate.swift */,
 				45AAEAB5256ED7E300862EF0 /* Service */,
 				45298823256EB78D008F41F5 /* Models */,
+				45AAEAC8256EF6C700862EF0 /* CoronaLegend */,
 				45755B53256E56BF0034E8C4 /* CoronaMap */,
 				4517A178256E545F00B19EC3 /* Assets.xcassets */,
 				4517A17A256E545F00B19EC3 /* LaunchScreen.storyboard */,
@@ -197,6 +206,17 @@
 				45AAEABE256EDD5800862EF0 /* UserCoronaChangeNotifier.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		45AAEAC8256EF6C700862EF0 /* CoronaLegend */ = {
+			isa = PBXGroup;
+			children = (
+				45AAEAC9256EF6D300862EF0 /* CoronaLegend.storyboard */,
+				45AAEACE256EF85900862EF0 /* CoronaLegendViewController.swift */,
+				45AAEAD6256EF8CD00862EF0 /* CoronaLegendCell.swift */,
+				45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */,
+			);
+			path = CoronaLegend;
 			sourceTree = "<group>";
 		};
 		9ECDCC6C92A792C80C3BC06A /* Pods */ = {
@@ -331,6 +351,7 @@
 			files = (
 				4529884B256EC25D008F41F5 /* Localizable.strings in Resources */,
 				4517A17C256E545F00B19EC3 /* LaunchScreen.storyboard in Resources */,
+				45AAEACA256EF6D300862EF0 /* CoronaLegend.storyboard in Resources */,
 				4517A179256E545F00B19EC3 /* Assets.xcassets in Resources */,
 				4517A177256E545700B19EC3 /* CoronaMap.storyboard in Resources */,
 			);
@@ -461,6 +482,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45AAEAC4256EEB3600862EF0 /* RegionStatusView.swift in Sources */,
+				45AAEACF256EF85900862EF0 /* CoronaLegendViewController.swift in Sources */,
+				45AAEAD7256EF8CD00862EF0 /* CoronaLegendCell.swift in Sources */,
 				4517A174256E545700B19EC3 /* CoronaMapViewController.swift in Sources */,
 				4529885D256EC5F6008F41F5 /* CoronaMapPresenter.swift in Sources */,
 				4517A170256E545700B19EC3 /* AppDelegate.swift in Sources */,
@@ -472,6 +495,7 @@
 				4529882D256EB7EF008F41F5 /* CoronaSignalFactory.swift in Sources */,
 				45AAEAA9256EC8A900862EF0 /* CoronaMapViewControllerFactory.swift in Sources */,
 				4517A172256E545700B19EC3 /* SceneDelegate.swift in Sources */,
+				45AAEADC256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,3 +29,7 @@
 "notification_infection_change_subtitle" = "Corona Signal Changed!";
 "notification_unknown_infection_title" = "Corona Signal Unknown!";
 "notification_unknown_infection_body" = "Missing geo data about current location";
+
+"corona_legend_title" = "Legend";
+"corona_legend_cell_signal_key" = "Signal Name";
+"corona_legend_cell_range_key" = "Range";
