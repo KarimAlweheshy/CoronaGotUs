@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct CoronaSignal {
+struct CoronaSignal: Equatable {
     let range: Range<Double>
     let color: UIColor
     let localizedLabelKey: String

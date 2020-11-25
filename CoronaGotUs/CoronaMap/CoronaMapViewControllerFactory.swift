@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 struct CoronaMapViewControllerFactory {
-    func makeViewController() -> CoronaMapViewController {
-        let presenter = CoronaMapDefaultPresenter()
+    func makeViewController(
+        storage: CurrentCoronaSignalStorage
+    ) -> CoronaMapViewController {
+        let presenter = CoronaMapDefaultPresenter(storage: storage)
         let storyboard = UIStoryboard(name: "CoronaMap", bundle: nil)
         let viewContorller: CoronaMapViewController? = storyboard.instantiateInitialViewController { coder in
             CoronaMapViewController(coder: coder, presenter: presenter)

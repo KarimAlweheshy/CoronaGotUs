@@ -17,8 +17,11 @@ final class CoronaMapDefaultPresenter {
     weak var view: CoronaMapView?
 
     private let map: AGSMap
+    private let storage: CurrentCoronaSignalStorage
+    private var userGeoElementsCancelable: AGSCancelable?
 
-    init() {
+    init(storage: CurrentCoronaSignalStorage) {
+        self.storage = storage
         let germanyLocation = CLLocationCoordinate2D(
             latitude: 51.1657,
             longitude: 10.4515
@@ -40,6 +43,10 @@ extension CoronaMapDefaultPresenter: CoronaMapPresenter {
         let feature = coronaFeatureLayer()
         map.operationalLayers.add(feature)
         view?.set(map: map)
+        view?.set(locationDataSource: AGSCLLocationDataSource())
+        view?.setUserLocationChangeHandler { [weak self] location in
+            self?.userLocationDidChange(location)
+        }
     }
 }
 
@@ -65,6 +72,32 @@ extension CoronaMapDefaultPresenter {
         feature.renderer = CoronaRendererFactory().makeRenderer()
 
         return feature
+    }
+
+    private func userLocationDidChange(_ location: AGSLocation) {
+        guard let position = location.position else { return }
+        self.userGeoElementsCancelable?.cancel()
+        self.userGeoElementsCancelable = self.view?.geoElements(
+            for: position,
+            completionHandler: self.handleNewUserGeoElements
+        )
+    }
+
+    private func handleNewUserGeoElements(
+        _ result: Result<[AGSGeoElement], Error>
+    ) {
+        guard
+            let region = try? result.get().first,
+            let json = try? JSONSerialization.data(
+                withJSONObject: region.attributes,
+                options: .sortedKeys
+            ),
+            let currentGeoRegion = try? JSONDecoder().decode(
+                CoronaGeoElement.self,
+                from: json
+            )
+        else { return }
+        storage.update(geoElement: currentGeoRegion)
     }
 }
 

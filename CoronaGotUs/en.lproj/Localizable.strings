@@ -24,3 +24,8 @@
 "no_information_found_title" = "Error";
 "no_information_found_message" = "No information found for this area";
 "alert_ok" = "OK";
+
+"notification_infection_change_body" = "Due to new region or changed in infections. Get familiar with new rules!";
+"notification_infection_change_subtitle" = "Corona Signal Changed!";
+"notification_unknown_infection_title" = "Corona Signal Unknown!";
+"notification_unknown_infection_body" = "Missing geo data about current location";

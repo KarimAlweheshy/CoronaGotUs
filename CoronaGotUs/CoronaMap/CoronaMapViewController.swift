@@ -10,6 +10,12 @@ import ArcGIS
 
 protocol CoronaMapView: AnyObject {
     func set(map: AGSMap)
+    func set(locationDataSource: AGSLocationDataSource)
+    func setUserLocationChangeHandler(handler: @escaping (AGSLocation) -> Void)
+    func geoElements(
+        for location: AGSPoint,
+        completionHandler: @escaping (Result<[AGSGeoElement], Error>) -> Void
+    ) -> AGSCancelable?
 }
 
 final class CoronaMapViewController: UIViewController {
@@ -41,6 +47,45 @@ extension CoronaMapViewController: CoronaMapView {
     func set(map: AGSMap) {
         mapView.map = map
     }
+
+    func set(locationDataSource: AGSLocationDataSource) {
+        mapView.locationDisplay.dataSource = locationDataSource
+        mapView.locationDisplay.start(completion: nil)
+    }
+
+    func setUserLocationChangeHandler(
+        handler: @escaping (AGSLocation) -> Void
+    ) {
+        mapView.locationDisplay.locationChangedHandler = handler
+    }
+
+    func geoElements(
+        for location: AGSPoint,
+        completionHandler: @escaping (Result<[AGSGeoElement], Error>) -> Void
+    ) -> AGSCancelable? {
+        let screenPoint = mapView.location(toScreen: location)
+        return mapView.identifyLayers(
+            atScreenPoint: screenPoint,
+            tolerance: 0,
+            returnPopupsOnly: false,
+            maximumResultsPerLayer: 1
+        ) { identifyResults, error in
+            if let error = error {
+                return completionHandler(.failure(error))
+            }
+
+            if let geoElements = identifyResults?.first?.geoElements {
+                return completionHandler(.success(geoElements))
+            }
+
+            let error = NSError(
+                domain: "Region for user not found",
+                code: -5,
+                userInfo: [:]
+            )
+            completionHandler(.failure(error))
+        }
+    }
 }
 
 // MARK: - Actions
@@ -66,7 +111,7 @@ extension CoronaMapViewController: AGSGeoViewTouchDelegate {
             tolerance: 10,
             returnPopupsOnly: true,
             maximumResultsPerLayer: 12
-        ) { [weak self] (identifyResults, error) -> Void in
+        ) { [weak self] identifyResults, error in
             self?.activityIndicatorView.stopAnimating()
             guard let identifyResults = identifyResults else { return }
             let popups = identifyResults.flatMap { $0.popups }
@@ -80,12 +125,6 @@ extension CoronaMapViewController: AGSGeoViewTouchDelegate {
 extension CoronaMapViewController {
     private func setupUI() {
         mapView.touchDelegate = self
-        setupLocationDisplayDataSource()
-    }
-
-     private func setupLocationDisplayDataSource() {
-        mapView.locationDisplay.dataSource = AGSCLLocationDataSource()
-        mapView.locationDisplay.start(completion: nil)
     }
 
     private func showPopups(_ popups: [AGSPopup]) {
