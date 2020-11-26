@@ -100,7 +100,6 @@ extension CoronaMapViewController: CoronaMapView {
         geoView(
             mapView,
             didTapAtScreenPoint: screenPoint,
-            mapPoint: location,
             tolerance: 1,
             maximumResultsPerLayer: 1
         )
@@ -136,7 +135,6 @@ extension CoronaMapViewController: AGSGeoViewTouchDelegate {
         self.geoView(
             geoView,
             didTapAtScreenPoint: screenPoint,
-            mapPoint: mapPoint,
             tolerance: 10,
             maximumResultsPerLayer: 12
         )
@@ -191,13 +189,12 @@ extension CoronaMapViewController {
     private func geoView(
         _ geoView: AGSGeoView,
         didTapAtScreenPoint screenPoint: CGPoint,
-        mapPoint: AGSPoint,
         tolerance: Double,
         maximumResultsPerLayer: Int
     ) {
         activityIndicatorView.startAnimating()
         lastPopupQuery?.cancel()
-        lastPopupQuery = mapView.identifyLayers(
+        lastPopupQuery = geoView.identifyLayers(
             atScreenPoint: screenPoint,
             tolerance: tolerance,
             returnPopupsOnly: true,

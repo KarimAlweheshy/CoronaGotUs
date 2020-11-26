@@ -22,7 +22,7 @@ final class RegionStatusView: UIView {
     }
 
     func update(for geoElement: CoronaGeoElement?) {
-        UIView.animate(withDuration: 0.3) { self.isHidden = false }
+        isHidden = false
 
         let signal = geoElement.flatMap { element in
             CoronaSignalFactory().makeAll().first {
@@ -34,13 +34,14 @@ final class RegionStatusView: UIView {
     }
 
     private func blinkImage() {
+        blinkingView.layer.removeAllAnimations()
         blinkingView.alpha = 0.0;
         UIView.animate(
             withDuration: 0.5,
             delay: 0.0,
             options: [.curveEaseInOut, .autoreverse, .repeat],
-            animations: { [weak self] in self?.blinkingView.alpha = 1.0 },
-            completion: { [weak self] _ in self?.blinkingView.alpha = 0.0 }
+            animations: { self.blinkingView.alpha = 1.0 },
+            completion: { _ in self.blinkingView.alpha = 0.0 }
         )
     }
 
