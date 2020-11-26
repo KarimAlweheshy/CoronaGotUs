@@ -50,8 +50,10 @@ extension CoronaLegendViewController: UITableViewDataSource {
 
 extension CoronaLegendViewController: CoronaLegendCellDelegate {
     func didTapShowRules(_ cell: CoronaLegendCell) {
-        guard let _ = tableView.indexPath(for: cell) else { return }
-
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let coronaSignal = signals[indexPath.row]
+        let viewController = CoronaRulesViewControllerFactory().makeViewController(coronaSignal: coronaSignal)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

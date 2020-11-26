@@ -30,6 +30,9 @@
 		45AAEACF256EF85900862EF0 /* CoronaLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEACE256EF85900862EF0 /* CoronaLegendViewController.swift */; };
 		45AAEAD7256EF8CD00862EF0 /* CoronaLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAD6256EF8CD00862EF0 /* CoronaLegendCell.swift */; };
 		45AAEADC256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */; };
+		45AAEAE8256F92DF00862EF0 /* CoronaRules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AAEAE7256F92DF00862EF0 /* CoronaRules.storyboard */; };
+		45AAEAED256F957C00862EF0 /* CoronaRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAEC256F957C00862EF0 /* CoronaRulesViewController.swift */; };
+		45AAEAF2256F97E700862EF0 /* CoronaRulesViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AAEAF1256F97E700862EF0 /* CoronaRulesViewControllerFactory.swift */; };
 		52F3DD20F285D0F9C43B2E6B /* Pods_CoronaGotUs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB1CD27B9693B5422A0F1EC /* Pods_CoronaGotUs.framework */; };
 		8768DEA9110654F948A4C2DF /* Pods_CoronaGotUsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4A8B059F745211804948DC /* Pods_CoronaGotUsTests.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +85,9 @@
 		45AAEACE256EF85900862EF0 /* CoronaLegendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendViewController.swift; sourceTree = "<group>"; };
 		45AAEAD6256EF8CD00862EF0 /* CoronaLegendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendCell.swift; sourceTree = "<group>"; };
 		45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaLegendViewControllerFactory.swift; sourceTree = "<group>"; };
+		45AAEAE7256F92DF00862EF0 /* CoronaRules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoronaRules.storyboard; sourceTree = "<group>"; };
+		45AAEAEC256F957C00862EF0 /* CoronaRulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaRulesViewController.swift; sourceTree = "<group>"; };
+		45AAEAF1256F97E700862EF0 /* CoronaRulesViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaRulesViewControllerFactory.swift; sourceTree = "<group>"; };
 		4ED83281230406F4D9D20A53 /* Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig"; path = "Target Support Files/Pods-CoronaGotUs-CoronaGotUsUITests/Pods-CoronaGotUs-CoronaGotUsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D4A8B059F745211804948DC /* Pods_CoronaGotUsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoronaGotUsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		940A86D0C751C1B0C0462E0F /* Pods-CoronaGotUsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoronaGotUsTests.debug.xcconfig"; path = "Target Support Files/Pods-CoronaGotUsTests/Pods-CoronaGotUsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 			children = (
 				4517A16F256E545700B19EC3 /* AppDelegate.swift */,
 				4517A171256E545700B19EC3 /* SceneDelegate.swift */,
+				45AAEAE6256F92C600862EF0 /* CoronaRules */,
 				45AAEAB5256ED7E300862EF0 /* Service */,
 				45298823256EB78D008F41F5 /* Models */,
 				45AAEAC8256EF6C700862EF0 /* CoronaLegend */,
@@ -217,6 +224,16 @@
 				45AAEADB256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift */,
 			);
 			path = CoronaLegend;
+			sourceTree = "<group>";
+		};
+		45AAEAE6256F92C600862EF0 /* CoronaRules */ = {
+			isa = PBXGroup;
+			children = (
+				45AAEAE7256F92DF00862EF0 /* CoronaRules.storyboard */,
+				45AAEAEC256F957C00862EF0 /* CoronaRulesViewController.swift */,
+				45AAEAF1256F97E700862EF0 /* CoronaRulesViewControllerFactory.swift */,
+			);
+			path = CoronaRules;
 			sourceTree = "<group>";
 		};
 		9ECDCC6C92A792C80C3BC06A /* Pods */ = {
@@ -349,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45AAEAE8256F92DF00862EF0 /* CoronaRules.storyboard in Resources */,
 				4529884B256EC25D008F41F5 /* Localizable.strings in Resources */,
 				4517A17C256E545F00B19EC3 /* LaunchScreen.storyboard in Resources */,
 				45AAEACA256EF6D300862EF0 /* CoronaLegend.storyboard in Resources */,
@@ -487,12 +505,14 @@
 				4517A174256E545700B19EC3 /* CoronaMapViewController.swift in Sources */,
 				4529885D256EC5F6008F41F5 /* CoronaMapPresenter.swift in Sources */,
 				4517A170256E545700B19EC3 /* AppDelegate.swift in Sources */,
+				45AAEAED256F957C00862EF0 /* CoronaRulesViewController.swift in Sources */,
 				45298815256E9848008F41F5 /* CasesRenderer.swift in Sources */,
 				45AAEAB7256ED7EF00862EF0 /* CurrentCoronaSignalStorage.swift in Sources */,
 				45298825256EB7AD008F41F5 /* CoronalSignal.swift in Sources */,
 				45AAEAB1256ED29800862EF0 /* CoronaGeoElement.swift in Sources */,
 				45AAEABF256EDD5800862EF0 /* UserCoronaChangeNotifier.swift in Sources */,
 				4529882D256EB7EF008F41F5 /* CoronaSignalFactory.swift in Sources */,
+				45AAEAF2256F97E700862EF0 /* CoronaRulesViewControllerFactory.swift in Sources */,
 				45AAEAA9256EC8A900862EF0 /* CoronaMapViewControllerFactory.swift in Sources */,
 				4517A172256E545700B19EC3 /* SceneDelegate.swift in Sources */,
 				45AAEADC256EFA9C00862EF0 /* CoronaLegendViewControllerFactory.swift in Sources */,

@@ -33,3 +33,4 @@
 "corona_legend_title" = "Legend";
 "corona_legend_cell_signal_key" = "Signal Name";
 "corona_legend_cell_range_key" = "Range";
+"rules" = "Rules";
