@@ -11,6 +11,7 @@ import ArcGIS
 
 protocol CoronaMapPresenter {
     func viewDidLoad()
+    func didTapStatus()
 }
 
 final class CoronaMapDefaultPresenter {
@@ -19,6 +20,7 @@ final class CoronaMapDefaultPresenter {
     private let map: AGSMap
     private let storage: CurrentCoronaSignalStorage
     private var userGeoElementsCancelable: AGSCancelable?
+    private var currentLocation: AGSLocation?
 
     init(storage: CurrentCoronaSignalStorage) {
         self.storage = storage
@@ -48,6 +50,11 @@ extension CoronaMapDefaultPresenter: CoronaMapPresenter {
             self?.userLocationDidChange(location)
         }
     }
+
+    func didTapStatus() {
+        guard let position = currentLocation?.position else { return }
+        view?.showPopUp(for: position)
+    }
 }
 
 // MARK: - Private Methods
@@ -75,6 +82,7 @@ extension CoronaMapDefaultPresenter {
     }
 
     private func userLocationDidChange(_ location: AGSLocation) {
+        currentLocation = location
         guard let position = location.position else { return }
         self.userGeoElementsCancelable?.cancel()
         self.userGeoElementsCancelable = self.view?.geoElements(

@@ -17,6 +17,7 @@ protocol CoronaMapView: AnyObject {
         for location: AGSPoint,
         completionHandler: @escaping (Result<[AGSGeoElement], Error>) -> Void
     ) -> AGSCancelable?
+    func showPopUp(for location: AGSPoint)
 }
 
 final class CoronaMapViewController: UIViewController {
@@ -93,6 +94,17 @@ extension CoronaMapViewController: CoronaMapView {
             completionHandler(.failure(error))
         }
     }
+
+    func showPopUp(for location: AGSPoint) {
+        let screenPoint = mapView.location(toScreen: location)
+        geoView(
+            mapView,
+            didTapAtScreenPoint: screenPoint,
+            mapPoint: location,
+            tolerance: 1,
+            maximumResultsPerLayer: 1
+        )
+    }
 }
 
 // MARK: - Actions
@@ -100,6 +112,10 @@ extension CoronaMapViewController: CoronaMapView {
 extension CoronaMapViewController {
     @objc private func didTapDonePopUp() {
         dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction private func didTapStatus() {
+        presenter.didTapStatus()
     }
 
     @IBAction private func didTapShowLegend() {
@@ -117,19 +133,13 @@ extension CoronaMapViewController: AGSGeoViewTouchDelegate {
         didTapAtScreenPoint screenPoint: CGPoint,
         mapPoint: AGSPoint
     ) {
-        activityIndicatorView.startAnimating()
-        lastPopupQuery?.cancel()
-        lastPopupQuery = mapView.identifyLayers(
-            atScreenPoint: screenPoint,
+        self.geoView(
+            geoView,
+            didTapAtScreenPoint: screenPoint,
+            mapPoint: mapPoint,
             tolerance: 10,
-            returnPopupsOnly: true,
             maximumResultsPerLayer: 12
-        ) { [weak self] identifyResults, error in
-            self?.activityIndicatorView.stopAnimating()
-            guard let identifyResults = identifyResults else { return }
-            let popups = identifyResults.flatMap { $0.popups }
-            self?.showPopups(popups)
-        }
+        )
     }
 }
 
@@ -176,6 +186,28 @@ extension CoronaMapViewController {
         )
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+
+    private func geoView(
+        _ geoView: AGSGeoView,
+        didTapAtScreenPoint screenPoint: CGPoint,
+        mapPoint: AGSPoint,
+        tolerance: Double,
+        maximumResultsPerLayer: Int
+    ) {
+        activityIndicatorView.startAnimating()
+        lastPopupQuery?.cancel()
+        lastPopupQuery = mapView.identifyLayers(
+            atScreenPoint: screenPoint,
+            tolerance: tolerance,
+            returnPopupsOnly: true,
+            maximumResultsPerLayer: maximumResultsPerLayer
+        ) { [weak self] identifyResults, error in
+            self?.activityIndicatorView.stopAnimating()
+            guard let identifyResults = identifyResults else { return }
+            let popups = identifyResults.flatMap { $0.popups }
+            self?.showPopups(popups)
+        }
     }
 }
 

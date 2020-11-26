@@ -30,7 +30,7 @@ final class RegionStatusView: UIView {
             }
         }
         blinkingView.backgroundColor = signal?.color
-        regionNameLabel.text = geoElement?.regionName ?? "Unknown"
+        regionNameLabel.text = "\(geoElement?.regionName ?? "Unknown") \(geoElement?.type ?? "")"
     }
 
     private func blinkImage() {

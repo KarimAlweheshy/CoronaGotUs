@@ -85,7 +85,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rt-6V-OKJ">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rt-6V-OKJ">
                                                         <rect key="frame" x="30" y="0.0" width="65.5" height="20"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" systemColor="linkColor"/>
@@ -93,13 +93,24 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-rX-mTK">
+                                                <rect key="frame" x="0.0" y="0.0" width="105.5" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <connections>
+                                                    <action selector="didTapStatus" destination="BYZ-38-t0r" eventType="touchUpInside" id="iQa-BJ-kU4"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                         <constraints>
                                             <constraint firstItem="fQJ-nR-2fs" firstAttribute="top" secondItem="7cP-oC-hWh" secondAttribute="top" constant="5" id="05Z-xz-Qv3"/>
                                             <constraint firstAttribute="trailing" secondItem="fQJ-nR-2fs" secondAttribute="trailing" constant="5" id="2V2-gh-d8e"/>
+                                            <constraint firstItem="cZP-rX-mTK" firstAttribute="top" secondItem="7cP-oC-hWh" secondAttribute="top" id="6CO-6T-404"/>
+                                            <constraint firstAttribute="bottom" secondItem="cZP-rX-mTK" secondAttribute="bottom" id="IBs-Mi-IbO"/>
                                             <constraint firstItem="fQJ-nR-2fs" firstAttribute="leading" secondItem="7cP-oC-hWh" secondAttribute="leading" constant="5" id="b4r-r3-Doh"/>
                                             <constraint firstAttribute="bottom" secondItem="fQJ-nR-2fs" secondAttribute="bottom" constant="5" id="eFF-8D-Hxy"/>
+                                            <constraint firstItem="cZP-rX-mTK" firstAttribute="leading" secondItem="7cP-oC-hWh" secondAttribute="leading" id="hzv-1H-Ore"/>
+                                            <constraint firstAttribute="trailing" secondItem="cZP-rX-mTK" secondAttribute="trailing" id="tAl-ba-tUD"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

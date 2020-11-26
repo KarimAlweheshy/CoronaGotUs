@@ -152,9 +152,9 @@
 			children = (
 				4517A16F256E545700B19EC3 /* AppDelegate.swift */,
 				4517A171256E545700B19EC3 /* SceneDelegate.swift */,
-				45AAEAE6256F92C600862EF0 /* CoronaRules */,
 				45AAEAB5256ED7E300862EF0 /* Service */,
 				45298823256EB78D008F41F5 /* Models */,
+				45AAEAE6256F92C600862EF0 /* CoronaRules */,
 				45AAEAC8256EF6C700862EF0 /* CoronaLegend */,
 				45755B53256E56BF0034E8C4 /* CoronaMap */,
 				4517A178256E545F00B19EC3 /* Assets.xcassets */,
