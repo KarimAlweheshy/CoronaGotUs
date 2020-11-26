@@ -48,7 +48,7 @@ extension CoronaRulesViewController {
         generalRuleLabel.text = NSLocalizedString("corona_signal_general_rule", comment: "")
         let labels: [UILabel] = [firstRuleLabel, secondRuleLabel, thirdRuleLabel]
         zip(labels, coronaSignal.localizableRulesKeys).forEach { label, rule in
-            label.text = "- \(NSLocalizedString(rule, comment: ""))"
+            label.text = "\t\(NSLocalizedString(rule, comment: ""))"
         }
         title = NSLocalizedString("rules", comment: "")
     }
