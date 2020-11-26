@@ -1,10 +1,15 @@
 # CoronaGotUs
 An iOS sample project to show the advancements in Germany corona-wise per region.
+
 The app uses an interactive map to display the regions according to EU/Bavarian corona signals. 
+
 You can select different regions and get to know all the info about it.
+
 You can also allow the app to access your location to know more about current location situation.
+
 Allowing the app to send notifcations means you will receive notifications when you change signals.
-The app depends on RKI apis and ASG servers and ios-runtime-sdk
+
+The app depends on RKI apis and ASG servers and ios-runtime-sdk.
 
 # Prerequisites
 1- xCode
